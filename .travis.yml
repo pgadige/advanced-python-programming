@@ -1,0 +1,19 @@
+# Config file for automatic testing at travis-ci.org
+
+language: python
+
+python:
+  - "3.6"
+  - "3.5"
+  - "3.4"
+  - "2.7"
+
+# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+install:
+  - pip install -r requirements.txt
+  - if [[ $TRAVIS_PYTHON_VERSION == 2* ]]; then pip install pathlib2==2.1.0; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.3* ]]; then pip install pathlib2==2.1.0; fi
+
+# command to run tests, e.g. python setup.py test
+script:
+  - python run_tests.py
